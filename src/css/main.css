@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+html {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+}
+
+a {
+  color: rgb(29, 29, 29);
+  text-decoration: none;
+}
+
+.global-nav-link {
+  height: 44px;
+}
+
+.local-nav-link {
+  height: 44px;
+}
+
+.global-nav-links,
+.local-nav-links {
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.local-nav-links .productname {
+  font-size: 1.4rem;
+  margin-right: auto;
+  font-weight: bold;
+}
+
+.local-nav-links a:not(.productname) {
+  font-size: 0.8rem;
+  margin-left: 2em;
+}
