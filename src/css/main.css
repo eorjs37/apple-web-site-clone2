@@ -16,6 +16,7 @@ a {
 
 .local-nav-link {
   height: 44px;
+  border-bottom: 1px solid #ddd;
 }
 
 .global-nav-links,
@@ -37,4 +38,84 @@ a {
 .local-nav-links a:not(.productname) {
   font-size: 0.8rem;
   margin-left: 2em;
+}
+
+.scroll-section {
+  padding-top: 50vh;
+}
+
+.scroll-section h1 {
+  text-align: center;
+  font-size: 9vw;
+}
+
+.description {
+  max-width: 1000px;
+  font-size: 2rem;
+  margin: 0 auto;
+  color: #888;
+  line-height: 1.6;
+}
+
+.description strong {
+  font-size: 6rem;
+  color: rgb(29, 29, 31);
+}
+
+.mid-message {
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #888;
+  font-size: 4vw;
+  line-height: 1.6;
+}
+
+.mid-message strong {
+  font-size: 2rem;
+  color: rgb(29, 29, 31);
+}
+
+.canvas-caption {
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 2rem;
+  color: #888;
+  text-align: center;
+}
+
+footer.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7rem;
+  color: #fff;
+  background-color: darkorange;
+}
+
+/* 768px 이하 */
+@media (max-width: 768px) {
+  .local-nav-links,
+  .global-nav-links,
+  .description,
+  .mid-message,
+  .canvas-caption {
+    padding: 0 1rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .description strong {
+    font-size: 3rem;
+  }
+
+  .mid-message {
+    font-size: 2rem;
+  }
+
+  .canvas-caption {
+    font-size: 1.2rem;
+  }
 }
