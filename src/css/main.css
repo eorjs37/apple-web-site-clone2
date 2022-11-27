@@ -93,6 +93,51 @@ footer.footer {
   background-color: darkorange;
 }
 
+.desc-message {
+  font-size: bold;
+  width: 20%;
+}
+
+#show-scene-0 #scroll-section-0 .sticy-elem,
+#show-scene-1 #scroll-section-1 .sticy-elem,
+#show-scene-2 #scroll-section-2 .sticy-elem,
+#show-scene-3 #scroll-section-3 .sticy-elem {
+  display: block;
+}
+
+.main-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-message p {
+  font-size: 4vw;
+  font-weight: bold;
+  line-height: 1.2;
+  height: 3em;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.main-message small {
+  font-size: 1.5vw;
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.sticy-elem {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.desc-message {
+  width: 20%;
+}
+
 /* 768px 이하 */
 @media (max-width: 768px) {
   .local-nav-links,
@@ -117,5 +162,18 @@ footer.footer {
 
   .canvas-caption {
     font-size: 1.2rem;
+  }
+
+  .desc-message {
+    font-size: bold;
+    width: 50%;
+  }
+
+  .main-message {
+    font-size: 2.5rem;
+  }
+
+  .main-message small {
+    font-size: 1rem;
   }
 }
