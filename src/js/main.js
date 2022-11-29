@@ -42,6 +42,20 @@
       sceneInfo[sceneIndex].scrollHeight = sceneInfo[sceneIndex].heightNum * window.innerHeight;
       sceneInfo[sceneIndex].objs.container.style.height = `${sceneInfo[sceneIndex].scrollHeight}px`;
     }
+
+    let totalScrollHeight = 0;
+    yOffset = window.pageYOffset;
+    //현재 scene 계산
+    for (let i = 0; i < sceneInfo.length; i++) {
+      totalScrollHeight += sceneInfo[i].scrollHeight;
+      if (totalScrollHeight >= yOffset) {
+        currentScene = i;
+        console.log("currentScene : ", currentScene);
+        break;
+      }
+    }
+
+    document.body.setAttribute("id", `show-scene-${currentScene}`);
   }
 
   function scrollLoop() {
@@ -49,13 +63,27 @@
     for (let i = 0; i < currentScene; i++) {
       prevScrollHeight += sceneInfo[i].scrollHeight;
     }
+
+    //현재 위치가 누적된 높이보다 크다면
+    if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
+      currentScene++;
+      document.body.setAttribute("id", `show-scene-${currentScene}`);
+    }
+    //현재 위치가 누적된 높이보다 작다면
+    if (yOffset < prevScrollHeight) {
+      if (currentScene === 0) return;
+      currentScene--;
+      document.body.setAttribute("id", `show-scene-${currentScene}`);
+    }
   }
 
-  window.addEventListener("resize", setLayOut);
   window.addEventListener("scroll", () => {
     yOffset = window.pageYOffset;
     scrollLoop();
   });
+
+  window.addEventListener("DOMContentLoaded", setLayOut);
+  window.addEventListener("resize", setLayOut);
 
   setLayOut();
 })();
