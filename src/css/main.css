@@ -12,11 +12,19 @@ a {
 
 .global-nav-link {
   height: 44px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .local-nav-link {
   height: 44px;
   border-bottom: 1px solid #ddd;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 100%;
 }
 
 .global-nav-links,
@@ -42,6 +50,7 @@ a {
 
 .scroll-section {
   padding-top: 50vh;
+  border: 1px solid red;
 }
 
 .scroll-section h1 {

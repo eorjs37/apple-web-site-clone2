@@ -9,6 +9,13 @@
       heightNum: 5, // 브라우저 높이의 5배 scrollHeight 세팅
       objs: {
         container: document.querySelector("#scroll-section-0"),
+        messageA: document.querySelector("#scroll-section-0 .main-message.a"),
+        messageB: document.querySelector("#scroll-section-0 .main-message.b"),
+        messageC: document.querySelector("#scroll-section-0 .main-message.c"),
+        messageD: document.querySelector("#scroll-section-0 .main-message.d"),
+      },
+      values: {
+        messageA_opacity: [0, 1],
       },
     },
     //1
@@ -37,6 +44,31 @@
     },
   ];
 
+  function playAnimation() {
+    const values = sceneInfo[currentScene].values;
+    const objs = sceneInfo[currentScene].objs;
+    const currentYOffset = yOffset - prevScrollHeight;
+    switch (currentScene) {
+      case 0:
+        // console.log("0 play");
+        calcValues(values.messageA_opacity, currentYOffset);
+        break;
+      case 1:
+        //console.log("1 play");
+        break;
+      case 2:
+        // console.log("2 play");
+        break;
+      case 3:
+        // console.log("3 play");
+        break;
+      default:
+        break;
+    }
+  }
+
+  function calcValues(values, currentYOffset) {}
+
   function setLayOut() {
     for (let sceneIndex = 0; sceneIndex < sceneInfo.length; sceneIndex++) {
       sceneInfo[sceneIndex].scrollHeight = sceneInfo[sceneIndex].heightNum * window.innerHeight;
@@ -50,7 +82,6 @@
       totalScrollHeight += sceneInfo[i].scrollHeight;
       if (totalScrollHeight >= yOffset) {
         currentScene = i;
-        console.log("currentScene : ", currentScene);
         break;
       }
     }
@@ -75,6 +106,8 @@
       currentScene--;
       document.body.setAttribute("id", `show-scene-${currentScene}`);
     }
+
+    playAnimation();
   }
 
   window.addEventListener("scroll", () => {
