@@ -15,7 +15,7 @@
         messageD: document.querySelector("#scroll-section-0 .main-message.d"),
       },
       values: {
-        messageA_opacity: [0, 1],
+        messageA_opacity: [200, 900],
       },
     },
     //1
@@ -67,7 +67,17 @@
     }
   }
 
-  function calcValues(values, currentYOffset) {}
+  function calcValues(values, currentYOffset) {
+    let rv;
+
+    let scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight;
+
+    console.log("scrollRatio : ", scrollRatio);
+
+    rv = scrollRatio * (values[1] - values[0]) + values[0];
+
+    console.log("rv : ", rv);
+  }
 
   function setLayOut() {
     for (let sceneIndex = 0; sceneIndex < sceneInfo.length; sceneIndex++) {
