@@ -15,7 +15,8 @@
         messageD: document.querySelector("#scroll-section-0 .main-message.d"),
       },
       values: {
-        messageA_opacity: [200, 900],
+        messageA_opacity: [0, 1, { start: 0.1, end: 0.2 }],
+        messageB_opacity: [0, 1, { start: 0.3, end: 0.4 }],
       },
     },
     //1
@@ -51,7 +52,8 @@
     switch (currentScene) {
       case 0:
         // console.log("0 play");
-        calcValues(values.messageA_opacity, currentYOffset);
+        let messageA_opacity_in = calcValues(values.messageA_opacity, currentYOffset);
+        objs.messageA.style.opacity = messageA_opacity_in;
         break;
       case 1:
         //console.log("1 play");
@@ -69,14 +71,28 @@
 
   function calcValues(values, currentYOffset) {
     let rv;
+    // currentYOffset : 현재 scene에서의 높이
+    // sceneInfo[currentScene].scrollHeight : 현재 scene의 높이
+    const scrollHeight = sceneInfo[currentScene].scrollHeight;
+    const scrollRatio = currentYOffset / scrollHeight;
 
-    let scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight;
+    if (values.length === 3) {
+      const partScrollStart = values[2].start * scrollHeight;
+      const partScrollEnd = values[2].end * scrollHeight;
+      const partScrollHeight = partScrollEnd - partScrollStart;
 
-    console.log("scrollRatio : ", scrollRatio);
+      if (currentYOffset >= partScrollStart && currentYOffset <= partScrollEnd) {
+        rv = ((currentYOffset - partScrollStart) / partScrollHeight) * (values[1] - values[0]) + values[0];
+      } else if (currentYOffset < partScrollStart) {
+        rv = values[0];
+      } else if (currentYOffset > partScrollEnd) {
+        rv = values[1];
+      }
+    } else {
+      rv = scrollRatio * (values[1] - values[0]) + values[0];
+    }
 
-    rv = scrollRatio * (values[1] - values[0]) + values[0];
-
-    console.log("rv : ", rv);
+    return rv;
   }
 
   function setLayOut() {
