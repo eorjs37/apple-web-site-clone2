@@ -116,6 +116,7 @@ footer.footer {
 
 .main-message {
   display: flex;
+  top: 35vh;
   justify-content: center;
   align-items: center;
 }
@@ -138,7 +139,6 @@ footer.footer {
 .sticy-elem {
   display: none;
   position: fixed;
-  top: 0;
   left: 0;
   width: 100%;
 }
